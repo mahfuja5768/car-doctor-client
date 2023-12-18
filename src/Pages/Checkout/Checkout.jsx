@@ -31,7 +31,7 @@ const Checkout = () => {
     console.log(order);
 
     axiosSecure
-      .post("https://car-doctor-server-in.vercel.app/orders", order)
+      .post("http://localhost:5000/orders", order)
       .then((data) => console.log(data.data))
       .catch((err) => console.log(err.message));
 

@@ -8,8 +8,8 @@ const Orders = () => {
   const { user } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
 
-  // const url = `https://car-doctor-server-in.vercel.app/orders?email=muna@myra.com`;
-  // const url = `https://car-doctor-server-in.vercel.app/orders?email=${user?.email}`;
+  // const url = `http://localhost:5000/orders?email=muna@myra.com`;
+  // const url = `http://localhost:5000/orders?email=${user?.email}`;
   const url = `/orders?email=${user?.email}`;
   useEffect(() => {
     // axios.get(url, {withCredentials:true})
@@ -35,7 +35,7 @@ const Orders = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .delete(`https://car-doctor-server-in.vercel.app/orders/${_id}`)
+          .delete(`http://localhost:5000/orders/${_id}`)
           .then((data) => {
             // console.log(data.data);
             if (data.data.deletedCount > 0) {
@@ -56,7 +56,7 @@ const Orders = () => {
     console.log(_id);
 
     axiosSecure
-      .patch(`https://car-doctor-server-in.vercel.app/orders/${_id}`, {
+      .patch(`http://localhost:5000/orders/${_id}`, {
         status: "confirm",
       })
       .then((data) => {

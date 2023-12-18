@@ -53,16 +53,14 @@ const AuthProvider = ({ children }) => {
         //get token and store client
         const userInfo = { email: currentUser.email };
         console.log(userInfo);
-        axios
-          .post("https://car-doctor-server-in.vercel.app/jwt", userInfo)
-          .then((res) => {
-            const token = res.data.token;
-            console.log(token);
-            if (token) {
-              localStorage.setItem("access-token", token);
-              setLoading(false);
-            }
-          });
+        axios.post("http://localhost:5000/jwt", userInfo).then((res) => {
+          const token = res.data.token;
+          console.log(token);
+          if (token) {
+            localStorage.setItem("access-token", token);
+            setLoading(false);
+          }
+        });
       } else {
         localStorage.removeItem("access-token");
         setLoading(false);
